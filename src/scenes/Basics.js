@@ -54,13 +54,18 @@ class Basics extends Phaser.Scene {
         // create a tween chain
         let pearTweenChain = this.tweens.chain({
             targets: funkypear,
-            ease: 'Bounce.easeOut',
             loop: 1,
             paused: false,
             tweens:[
                 {
                     x: w - 64,
-                    duration: 500
+                    duration: 500,
+                    ease: 'Bounce.easeOut'
+                },
+                {
+                    y: h - 64,
+                    duration: 1000,
+                    ease: 'Sine.easeOut'
                 }
             ]
         })
