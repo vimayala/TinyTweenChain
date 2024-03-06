@@ -58,9 +58,15 @@ class Basics extends Phaser.Scene {
             paused: true,
             tweens:[
                 {
+                    // onStart: () => {
+                    //     funkypear.setAngle(0)
+                    // },
                     x: w - 64,
                     duration: 500,
                     ease: 'Bounce.easeOut',
+                    onComplete: () => {
+                        funkypear.setAngle(90)
+                    }
                 },
                 {
                     y: h - 64,
@@ -70,16 +76,29 @@ class Basics extends Phaser.Scene {
                     },
                     duration: 1000,
                     ease: 'Sine.easeOut',
+                    onComplete: () => {
+                        funkypear.setAngle(180)
+                    }
                 },
                 {
                     x: 64,
                     duration: 1500,
                     // ease: 'Bounce.easeOut',
+                    onComplete: () => {
+                        funkypear.setAngle(270)
+                    }
                 },
                 {
                     y: 64,
                     duration: 1000,
+                    scale: {
+                        from: 2.25,
+                        to: 1
+                    },
                     ease: 'Sine.easeOut',
+                    onComplete: () => {
+                        funkypear.setAngle(360)
+                    }
                 }
             ]
         })
@@ -90,6 +109,7 @@ class Basics extends Phaser.Scene {
         // add mouse input listener to start tween chain
         this.input.on('pointerdown', () => {
             funkypear.setPosition(64, 64)           // reset position
+            funkypear.setAngle(0)
             pearTweenChain.restart()                // built in method
         })
 
